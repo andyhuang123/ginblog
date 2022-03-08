@@ -1,0 +1,24 @@
+# settings-dev.yaml
+name: "go-gin"
+port: 8022
+logsAddress: "./logs/"
+
+mysql:
+  name: "root"
+  host: "127.0.0.1"
+  port: 3306
+  password: "808080"
+  dbName: "test"
+
+redis:
+  host: "127.0.0.1"
+  port: 6379
+
+jwt:
+  key: "EYsnfKMf5XWk87LASEs28Dj5ZqGkSerH"
+
+minio:
+  endpoint: "127.0.0.1:9000"
+  accessKeyID: "minioadmin"
+  secretAccessKey: "minioadmin"
+
