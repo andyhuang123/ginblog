@@ -21,12 +21,17 @@ func Routers() *gin.Engine {
 	// 设置跨域中间件
 	Router.Use(middlewares.Cors())
 
+	Router.GET("/ws",api.WsClient)
+
 	ApiGroup := Router.Group("/v1/")
 	api.UserRouter(ApiGroup)
 	api.InitBaseRouter(ApiGroup)
 
+
 	ViewGroup := Router.Group("/")
 	web.WebUserRouter(ViewGroup)
+
+
 
 	//注册pprof 相关路由
 	pprof.Register(Router)

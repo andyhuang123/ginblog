@@ -84,6 +84,8 @@ func (c *Client) Write() {
 				return
 			}
 			log.Printf("client [%s] write message: %s", c.Id, string(message))
+			 str := "hello world"
+			 message = []byte(str)
 			err := c.Socket.WriteMessage(websocket.BinaryMessage, message)
 			if err != nil {
 				log.Printf("client [%s] writemessage err: %s", c.Id, err)
