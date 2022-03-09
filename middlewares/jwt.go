@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"gin-blog/news/Response"
 	"gin-blog/news/global"
-	"github.com/dgrijalva/jwt-go"
+	"github.com/golang-jwt/jwt"
 	"github.com/fatih/color"
 	"github.com/gin-gonic/gin"
 	"net/http"
