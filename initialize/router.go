@@ -2,12 +2,14 @@ package initialize
 
 import (
 	"gin-blog/news/middlewares"
-	"gin-blog/news/router"
+	"gin-blog/news/router/api"
+	"gin-blog/news/router/web"
 	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
 )
 
 func Routers() *gin.Engine {
+
 	Router := gin.Default()
 	//模板解析
 	Router.LoadHTMLGlob("view/**/**")
@@ -18,11 +20,11 @@ func Routers() *gin.Engine {
 	Router.Use(middlewares.Cors())
 
 	ApiGroup := Router.Group("/v1/")
-	router.UserRouter(ApiGroup)
-	router.InitBaseRouter(ApiGroup)
+	api.UserRouter(ApiGroup)
+	api.InitBaseRouter(ApiGroup)
 
 	ViewGroup := Router.Group("/")
-	router.WebUserRouter(ViewGroup)
+	web.WebUserRouter(ViewGroup)
 
 	//注册pprof 相关路由
 	pprof.Register(Router)

@@ -1,4 +1,4 @@
-package router
+package api
 
 import (
 	"gin-blog/news/controller"
