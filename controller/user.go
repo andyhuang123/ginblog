@@ -7,15 +7,7 @@ import (
 	"gin-blog/news/models"
 	"gin-blog/news/utils"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
-
-func Home(c *gin.Context){
-
-	c.HTML(http.StatusOK,"home/index.tmpl",gin.H{
-		"title":"home page",
-	})
-}
 
 // PasswordLogin 登录
 func PasswordLogin(c *gin.Context) {

@@ -11,8 +11,10 @@ import (
 func Routers() *gin.Engine {
 
 	Router := gin.Default()
-	//模板解析
+	//模板解析,静态资源
 	Router.LoadHTMLGlob("view/**/**")
+	Router.StaticFile("/favicon.ico", "./public/favicon.ico")
+	Router.Static("/statics","./public/statics")
 
 	// 路由分组
 	Router.Use(middlewares.GinLogger(), middlewares.GinRecovery(true))
