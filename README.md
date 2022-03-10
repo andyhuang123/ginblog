@@ -14,6 +14,16 @@
 
     air -c  air.conf
 
+#### docker部署
+    编辑
+    Dockerfile 文件
+
+    构建镜像
+    docker build --rm  -t hello:v1 .
+    
+    添加容器
+    docker run --rm -it -p 127.0.0.1:8022:8022 hello:v1
+
 ### 性能统计 "github.com/gin-contrib/pprof"
 
     访问 如下地址 即可（端口号就是你的server）

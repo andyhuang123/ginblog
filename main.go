@@ -40,7 +40,7 @@ func main() {
 	color.Blue(value.Val())
 
 	//启动gin,并配置端口,global.Settings.Port是yaml配置过的
-	err := Router.Run(fmt.Sprintf(":%d", global.Settings.Port))
+	err := Router.Run(fmt.Sprintf("0.0.0.0:%d", global.Settings.Port))
 	if err != nil {
 		zap.L().Info("this is hello func", zap.String("error", "启动错误!"))
 	}
