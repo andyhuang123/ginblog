@@ -12,7 +12,7 @@ func InitRedis() {
 	// 生成redis客户端
 	global.Redis = redis.NewClient(&redis.Options{
 		Addr:     addr,
-		Password: "", // no password set
+		Password: "808080", // no password set
 		DB:       0,  // use default DB
 	})
 	// 链接redis

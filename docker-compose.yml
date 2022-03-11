@@ -1,0 +1,59 @@
+version: '3.9'
+
+volumes:
+  db: {}
+  rdb: {}
+
+services:
+  # MySQL
+  mysql:
+    #env_file: .env
+    image: mysql:5.7
+    container_name: web-mysql
+    ports:
+      - "3306"
+    volumes:
+      - db:/var/lib/mysql
+      - ./build/docker/mysql/conf.d:/etc/mysql/conf.d
+      - ./build/docker/mysql/init.d:/docker-entrypoint-initdb.d
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: go-gin
+      MYSQL_USER: guestuser
+      MYSQL_PASSWORD: secret123
+
+  # Redis
+  redis:
+    image: redis:5.0.10-alpine3.12
+    container_name: web-redis
+    ports:
+      - "6379"
+    volumes:
+      - rdb:/data
+    restart: always
+    command: redis-server --requirepass 808080 --appendonly yes
+
+  # golang:go-gin-wrapper
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      #args:
+      #  redisHostName: redis-server
+      #  mysqlHostName: mysql-server
+    image: go-gin-wrapper:1.0
+    container_name: web
+    ports:
+      - "8022:8022"
+    environment:
+      ENC_KEY: ${ENC_KEY}
+      ENC_IV: ${ENC_IV}
+    links:
+      - mysql:mysql-server
+      - redis:redis-server
+    depends_on:
+      - mysql
+      - redis
+    restart: always
+    command: /build/hello -f ./settings.yaml

@@ -34,8 +34,8 @@ func main() {
 	initialize.InitRedis()
 
 	color.Yellow(">>>>>>>>>>>>>>>gin服务开始")
-    global.Redis.Set("test","testvalue",time.Second)
-	time.Sleep(time.Second*2)
+    global.Redis.Set("test","testvalue",time.Second*30)
+	//time.Sleep(time.Second*2)
 	value := global.Redis.Get("test")
 	color.Blue(value.Val())
 

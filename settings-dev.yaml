@@ -4,14 +4,15 @@ port: 8022
 logsAddress: "./logs/"
 
 mysql:
-  name: "root"
-  host: "127.0.0.1"
+  name: "guestuser"
+  host: "web-mysql"
   port: 3306
-  password: "808080"
-  dbName: "test"
+  dbName: "go-gin"
+  password: "secret123"
+
 
 redis:
-  host: "127.0.0.1"
+  host: "web-redis"
   port: 6379
 
 jwt:
