@@ -2,20 +2,26 @@ package web
 
 import (
 	"gin-blog/news/controller"
+
 	"github.com/gin-gonic/gin"
 )
 
 func WebUserRouter(Router *gin.RouterGroup) {
 
-
-	index := Router.Group("/")
+	HomeRouter := Router.Group("/")
 	{
-		index.Any("", controller.HomeView)
+		HomeRouter.Any("", controller.HomeView)
+
+		HomeRouter.GET("index.html", controller.HomeView)
+
+		HomeRouter.GET("post.html", controller.PostView)
+
+		HomeRouter.GET("category.html", controller.CategoryView)
+
+		HomeRouter.GET("about.html", controller.AboutView)
+
+		HomeRouter.GET("contact.html", controller.ContactView)
+
 	}
 
-	UserRouter := Router.Group("home")
-	{
-		UserRouter.GET("index", controller.HomeView)
-	}
 }
-

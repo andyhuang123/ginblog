@@ -1,14 +1,14 @@
 package controller
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
-	"strings"
+
+	"github.com/gin-gonic/gin"
 )
 
-func HomeView(c *gin.Context){
+func HomeView(c *gin.Context) {
 
-	c.HTML(http.StatusOK, "index.tmpl", gin.H{
-		"title": "hello gin " + strings.ToLower(c.Request.Method) + " method",
+	c.HTML(http.StatusOK, "index.html", gin.H{
+		"active": "home",
 	})
 }

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"time"
 )
+
 func GetNowFormatTodayTime() string {
 
 	now := time.Now()

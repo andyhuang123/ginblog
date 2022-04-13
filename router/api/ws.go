@@ -2,7 +2,6 @@ package api
 
 import (
 	"gin-blog/news/utils"
-	"gin-blog/news/utils/ws"
 	"github.com/gin-gonic/gin"
 	"github.com/gorilla/websocket"
 	uuid "github.com/satori/go.uuid"
@@ -32,13 +31,13 @@ func WsClient(context *gin.Context) {
 	//生成唯一标识client_id
 	var uuid = uuid.NewV4().String()
 	//fmt.Println("uuid==",uuid)
-	client := &ws.Client{
+	client := &utils.Client{
 		Id:      uuid,
 		Socket:  conn,
 		Message: make(chan []byte, 1024),
 	}
 	//注册
-	ws.WebsocketManager.RegisterClient(client)
+	utils.WebsocketManager.RegisterClient(client)
 
 	//起协程，实时接收和回复数据
 	go client.Read()

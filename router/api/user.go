@@ -12,8 +12,9 @@ func UserRouter(Router *gin.RouterGroup) {
 	{
 		UserRouter.POST("login", controller.PasswordLogin)
 
-		UserRouter.GET("list",middlewares.JWTAuth(),middlewares.IsAdminAuth(), controller.GetUserList)
+		UserRouter.GET("list", middlewares.JWTAuth(), middlewares.IsAdminAuth(), controller.GetUserList)
+
+		UserRouter.GET("info", middlewares.ApiSignMIddleware(), controller.Info)
 
 	}
 }
-

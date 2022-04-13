@@ -24,4 +24,3 @@ func InitConfig() {
 	global.Settings = serverConfig
 	color.Blue("11111111", global.Settings.LogsAddress)
 }
-

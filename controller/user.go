@@ -23,13 +23,13 @@ func PasswordLogin(c *gin.Context) {
 	//	return
 	//}
 
-	user,ok := dao.FindUserInfo(PasswordLoginForm.Username,PasswordLoginForm.PassWord)
+	user, ok := dao.FindUserInfo(PasswordLoginForm.Username, PasswordLoginForm.PassWord)
 	if !ok {
-		Response.Err(c,401,401,"未注册该用户","")
+		Response.Err(c, 401, 401, "未注册该用户", "")
 	}
-	token := utils.CreateToken(c, int(user.ID),user.NickName,user.Role)
+	token := utils.CreateToken(c, int(user.ID), user.NickName, user.Role)
 	userinfoMap := HandleUserModelToMap(user)
-    userinfoMap["token"] = token
+	userinfoMap["token"] = token
 	Response.Success(c, 200, "success", userinfoMap)
 
 }
@@ -56,6 +56,11 @@ func GetUserList(c *gin.Context) {
 		"total":    total,
 		"userlist": userlist,
 	})
+}
+
+func Info(c *gin.Context) {
+
+	Response.Success(c, 200, "获取用户详情成功", "")
 }
 
 func HandleUserModelToMap(user *models.User) map[string]interface{} {

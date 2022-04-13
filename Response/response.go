@@ -1,11 +1,12 @@
 package Response
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
-func Success(c *gin.Context,code int,msg interface{},data interface{})  {
+func Success(c *gin.Context, code int, msg interface{}, data interface{}) {
 	c.JSON(http.StatusOK, map[string]interface{}{
 		"code": code, // 自定义code
 		"msg":  msg,  // message

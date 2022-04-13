@@ -10,6 +10,7 @@ import (
 
 // base64Captcha  缓存对象
 var store = base64Captcha.DefaultMemStore
+
 // GetCaptcha 获取验证码
 func GetCaptcha(ctx *gin.Context) {
 	//

@@ -18,6 +18,6 @@ var (
 
 var Trans ut.Translator
 
-var DB    *gorm.DB
+var DB *gorm.DB
 
-var Redis  *redis.Client
+var Redis *redis.Client

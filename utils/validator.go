@@ -18,11 +18,11 @@ func HandleValidatorError(c *gin.Context, err error) {
 		//c.JSON(http.StatusOK, gin.H{
 		//	"msg": err.Error(),
 		//})
-		Response.Err(c,http.StatusInternalServerError,500,"字段校验错误", err.Error())
+		Response.Err(c, http.StatusInternalServerError, 500, "字段校验错误", err.Error())
 
 	}
 	msg := removeTopStruct(errs.Translate(global.Trans))
-	Response.Err(c,http.StatusBadRequest,400,"字段校验错误", msg)
+	Response.Err(c, http.StatusBadRequest, 400, "字段校验错误", msg)
 	return
 }
 
@@ -36,14 +36,13 @@ func removeTopStruct(fileds map[string]string) map[string]string {
 	return rsp
 }
 
-
 // ValidateMobile 校验手机号
 func ValidateMobile(fl validator.FieldLevel) bool {
 	// 利用反射拿到结构体tag含有mobile的key字段
 	mobile := fl.Field().String()
 	//使用正则表达式判断是否合法
 	ok, _ := regexp.MatchString(`^1([38][0-9]|14[579]|5[^4]|16[6]|7[1-35-8]|9[189])\d{8}$`, mobile)
-	if !ok{
+	if !ok {
 		return false
 	}
 	return true

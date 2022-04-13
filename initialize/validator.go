@@ -55,6 +55,7 @@ func InitTrans(locale string) (err error) {
 
 // Func myvalidator.ValidateMobile
 type Func func(fl validator.FieldLevel) bool
+
 // RegisterValidatorFunc 注册自定义校验tag
 func RegisterValidatorFunc(v *validator.Validate, tag string, msgStr string, fn Func) {
 	// 注册tag自定义校验

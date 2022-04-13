@@ -12,12 +12,11 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
-
 )
-
 
 // GinLogger 接收gin框架默认的日志
 func GinLogger() gin.HandlerFunc {
+
 	return func(c *gin.Context) {
 		start := time.Now()
 		// 请求路径
@@ -90,6 +89,3 @@ func GinRecovery(stack bool) gin.HandlerFunc {
 		c.Next()
 	}
 }
-
-
-

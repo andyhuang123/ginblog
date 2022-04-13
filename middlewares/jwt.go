@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"gin-blog/news/Response"
 	"gin-blog/news/global"
-	"github.com/golang-jwt/jwt"
 	"github.com/fatih/color"
 	"github.com/gin-gonic/gin"
+	"github.com/golang-jwt/jwt"
 	"net/http"
 	"time"
 )

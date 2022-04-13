@@ -7,6 +7,7 @@ import (
 )
 
 var users []models.User
+
 // GetUserList 获取用户列表(page第几页,page_size每页几条数据)
 func GetUserListDao(page int, page_size int) (int, []interface{}) {
 	// 分页用户列表数据
@@ -16,7 +17,7 @@ func GetUserListDao(page int, page_size int) (int, []interface{}) {
 	// 查询所有的user
 	result := global.DB.Offset(offset).Limit(page_size).Find(&users)
 	// 查不到数据时
-	if result.RowsAffected == 0{
+	if result.RowsAffected == 0 {
 		return 0, userList
 	}
 	// 获取user总数
@@ -29,7 +30,7 @@ func GetUserListDao(page int, page_size int) (int, []interface{}) {
 		birthday := ""
 		if useSingle.Birthday == nil {
 			birthday = ""
-		}else {
+		} else {
 			// 给未设置生日的初始值
 			birthday = useSingle.Birthday.Format("2006-01-02")
 		}
@@ -51,6 +52,7 @@ func GetUserListDao(page int, page_size int) (int, []interface{}) {
 }
 
 var user models.User
+
 // UsernameFindUserInfo 通过username找到用户信息
 
 func FindUserInfo(username string, password string) (*models.User, bool) {

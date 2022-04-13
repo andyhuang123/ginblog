@@ -3,8 +3,8 @@ package utils
 import (
 	"gin-blog/news/Response"
 	"gin-blog/news/middlewares"
-	"github.com/golang-jwt/jwt"
 	"github.com/gin-gonic/gin"
+	"github.com/golang-jwt/jwt"
 	"time"
 )
 
